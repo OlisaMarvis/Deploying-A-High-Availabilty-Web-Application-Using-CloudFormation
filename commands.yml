@@ -1,0 +1,14 @@
+aws cloudformation create-stack --stack-name myStack --template-body file://$2 --parameters file://$3 --region-us-east-1
+aws cloudformation create-stack --stack-name $1 --template-body file://$2  --parameters file://$3 --region=us-east-1
+//without paramaeters file
+aws cloudformation create-stack --stack-name myStack --template-body file://VPC.yml
+
+//update
+aws cloudformation update-stack --stack-name $1 --template-body file://$2  --parameters file://$3 --region=us-east-1
+
+//adding options
+aws cloudformation create-stack --stack-name $1 --template-body file://$2  --parameters file://$3 --capabilities "CAPABILITY_IAM" "CAPABILITY_NAMED_IAM" --region=us-east-1
+
+## While running the AWS commands using either create.sh or update.sh file, if you face permission denied error, then you will have to grant the execute permission to the owner (yourself) explicitly as:
+// chmod +x update.sh 
+// chmod +x create.sh 
